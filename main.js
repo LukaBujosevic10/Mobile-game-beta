@@ -43,7 +43,7 @@ $(document).ready(function() {
   function  makeMaze() {
     for (var k = 0; k < 420; k=k+14) {
       for (var i = 0; i < 280; i = i+14) {
-        element = niz[k/12][i/12];
+        element = niz[k/14][i/14];
         if (element == 0) {
             ctx.fillStyle = "#ffffff";
         }else if(element == 1){
