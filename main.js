@@ -38,12 +38,12 @@ $(document).ready(function() {
 
 
            console.log(niz[0]);
-  ctx.fillStyle = "#FF0000";
-  ctx.fillRect(0, 0, 200, 300);
+  //ctx.fillStyle = "#FF0000";
+  //ctx.fillRect(0, 0, 200, 300);
   function  makeMaze() {
-    for (var k = 0; k < 360; k=k+12) {
-      for (var i = 0; i < 240; i = i+12) {
-        element = niz[k/12][i/12];
+    for (var k = 0; k < 450; k=k+15) {
+      for (var i = 0; i < 300; i = i+15) {
+        element = niz[k/15][i/15];
         if (element == 0) {
             ctx.fillStyle = "#ffffff";
         }else if(element == 1){
@@ -51,7 +51,7 @@ $(document).ready(function() {
         }else{
           ctx.fillStyle = "pink";
         }
-        ctx.fillRect(i, k, i+12, k+12);
+        ctx.fillRect(i, k, i+15, k+15);
       }
     }
 
