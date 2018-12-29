@@ -49,7 +49,7 @@ $(document).ready(function() {
         }else if(element == 1){
           ctx.fillStyle = "#000000";
         }else{
-          ctx.fillStyle = "green";
+          ctx.fillStyle = "pink";
         }
         ctx.fillRect(i, k, i+12, k+12);
       }
