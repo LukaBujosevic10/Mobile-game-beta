@@ -62,7 +62,7 @@ $(document).ready(function() {
   function makingPlayer() {
     ctx.beginPath();
   ctx.fillStyle = player.color;
-  ctx.arc(player.position.x, player.position.y, 7.5, 0, 2 * Math.PI);
+  ctx.arc(player.position.x, player.position.y, 6, 0, 2 * Math.PI);
   ctx.fill();
   ctx.stroke();
 
