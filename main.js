@@ -87,7 +87,7 @@ $(document).ready(function() {
     player.position.x += 2;
     makeMaze();
   }
-  if (event.gamma < -5 player.position.y < 435) {
+  if (event.gamma < -5 && player.position.y < 435) {
     player.position.x -= 2;
     makeMaze();
   }
