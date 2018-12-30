@@ -79,7 +79,7 @@ $(document).ready(function() {
     player.position.y += 2;
     makeMaze();
   }
-  if (event.beta < -5 &&/* player.position.x <= 15*/) {
+  if (event.beta < -5 /* player.position.x <= 15*/) {
     player.position.y -= 2;
     makeMaze();
   }
@@ -87,7 +87,7 @@ $(document).ready(function() {
     player.position.x += 2;
     makeMaze();
   }
-  if (event.gamma < -5 && /*player.position.y <= 435*/) {
+  if (event.gamma < -5  /*player.position.y <= 435*/) {
     player.position.x -= 2;
     makeMaze();
   }
