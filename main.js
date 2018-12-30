@@ -36,7 +36,7 @@ $(document).ready(function() {
            ];
            let player = {
              position: {x: 275, y: 23},
-             color: "yellow",
+             color: "green",
             // lavirint_pozicija: {x : Math.round(this.position.x/15), y: Math.round(this.position.y/15)}
            }
 
