@@ -75,7 +75,7 @@ $(document).ready(function() {
           alert("Sorry, your browser doesn't support Device Orientation");
         }
         function deviceOrientationListener(event) {
-  if (event.beta > 5 && player.position.x < 385) {
+  if (event.beta > 5 && player.position.y < 385) {
     player.position.y += 2;
     makeMaze();
   }
@@ -83,7 +83,7 @@ $(document).ready(function() {
     player.position.y -= 2;
     makeMaze();
   }
-  if (event.gamma > 5 && player.position.y < 15) {
+  if (event.gamma > 5 && player.position.x < 15) {
     player.position.x += 2;
     makeMaze();
   }
