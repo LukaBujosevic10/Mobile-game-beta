@@ -84,11 +84,11 @@ $(document).ready(function() {
     makeMaze();
   }
   if (event.gamma > 5 && player.position.y < 15) {
-    player.position.x -= 2;
+    player.position.x += 2;
     makeMaze();
   }
   if (event.gamma < -5 player.position.y < 435) {
-    player.position.x += 2;
+    player.position.x -= 2;
     makeMaze();
   }
 
