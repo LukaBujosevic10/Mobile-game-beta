@@ -34,12 +34,15 @@ $(document).ready(function() {
              [1,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
              [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
            ];
-
+           let player = {
+             position: {x: 270, y: 25},
+             color: "green"
+           }
 
 
            console.log(niz[0]);
   //ctx.fillStyle = "#FF0000";
-  //ctx.fillRect(0, 0, 200, 300);
+  //ctx.fillRect(0, 0,context 200, 300);
   function  makeMaze() {
     for (var k = 0; k < 450; k=k+15) {
       for (var i = 0; i < 300; i = i+15) {
@@ -54,7 +57,17 @@ $(document).ready(function() {
         ctx.fillRect(i, k, i+15, k+15);
       }
     }
+    makingPlayer();
+  }
+  function makingPlayer() {
+    ctx.beginPath();
+  ctx.fillStyle = player.color;
+  ctx.arc(player.position.x, player.position.y, 7.5, 0, 2 * Math.PI);
+  ctx.fill();
+  ctx.stroke();
+
 
   }
   makeMaze();
+
 });
