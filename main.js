@@ -35,7 +35,7 @@ $(document).ready(function() {
              [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1],
              [1,0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,1],
              [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
-             [1,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+             [1,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,1],
              [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
            ];
            let player = {
@@ -54,8 +54,10 @@ $(document).ready(function() {
             ctx.fillStyle = "#ffffff";
         }else if(element == 1){
           ctx.fillStyle = "#000000";
-        }else{
+        }else if(element == 2){
           ctx.fillStyle = "lightblue";
+        }else if (element == 3) {
+          ctx.fillStyle = "red";
         }
         ctx.fillRect(i, k, i+15, k+15);
       }
@@ -81,6 +83,8 @@ $(document).ready(function() {
   function deviceOrientationListener(event) {
 
     izracunavanje();
+    provera_specijalnih_polja();
+
   if (event.beta > 5) {
     if (niz[poz_y+1][poz_x] == 1) {
       if (ostatak_y < 8) {
@@ -130,6 +134,7 @@ window.addEventListener("keydown", tastatura);
 
 function tastatura() {
   izracunavanje();
+  provera_specijalnih_polja();
   if (event.keyCode == 39) {
     if (niz[poz_y][poz_x+1] == 1) {
       if (ostatak_x < 8) {
@@ -185,5 +190,12 @@ function promena_y(broj){
 function promena_x(nbroj){
   player.position.x+=nbroj;
 }
-
+function provera_specijalnih_polja() {
+  if (niz[poz_y][poz_x] == 2) {
+    player.position.x = 275;
+    player.position.y = 23;
+  }else if (niz[poz_y][poz_x] == 3) {
+    console.log('pobedio si');
+  }
+}
 });
