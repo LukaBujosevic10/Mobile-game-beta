@@ -36,7 +36,7 @@ $(document).ready(function() {
            ];
            let player = {
              position: {x: 275, y: 23},
-             color: "yellow",
+             color: "green",
             // lavirint_pozicija: {x : Math.round(this.position.x/15), y: Math.round(this.position.y/15)}
            }
 
@@ -74,20 +74,25 @@ $(document).ready(function() {
         } else {
           alert("Sorry, your browser doesn't support Device Orientation");
         }
-        function deviceOrientationListener(event) {
-  if (event.beta > 5 /*&& player.position.y < 385*/) {
+  function deviceOrientationListener(event) {
+  let poz_x =  Math.floor(player.position.x/15);
+  let poz_y = Math.floor(player.position.y/15);
+
+
+  if (event.beta > 5 && niz[poz_y+1][poz_x] !== 1) {
     player.position.y += 2;
     makeMaze();
   }
-  if (event.beta < -5 /* player.position.x <= 15*/) {
+  if (event.beta < -5) {
+
     player.position.y -= 2;
     makeMaze();
   }
-  if (event.gamma > 5 /*&& player.position.x < 15*/) {
+  if (event.gamma > 5) {
     player.position.x += 2;
     makeMaze();
   }
-  if (event.gamma < -5  /*player.position.y <= 435*/) {
+  if (event.gamma < -5) {
     player.position.x -= 2;
     makeMaze();
   }
