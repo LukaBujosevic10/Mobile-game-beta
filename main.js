@@ -71,36 +71,61 @@ $(document).ready(function() {
 
   }
   makeMaze();
-/*  if (window.DeviceOrientationEvent) {
+  if (window.DeviceOrientationEvent) {
           window.addEventListener("deviceorientation", deviceOrientationListener);
         } else {
           alert("Sorry, your browser doesn't support Device Orientation");
         }
+
+
   function deviceOrientationListener(event) {
-  let poz_x =  Math.floor(player.position.x/15);
-  let poz_y = Math.floor(player.position.y/15);
 
-
-  if (event.beta > 5 && niz[poz_y+1][poz_x] !== 1) {
-    player.position.y += 2;
+    izracunavanje();
+  if (event.beta > 5) {
+    if (niz[poz_y+1][poz_x] == 1) {
+      if (ostatak_y < 8) {
+        promena_y(2);
+      }
+    }else {
+      promena_y(2);
+    }
     makeMaze();
   }
   if (event.beta < -5) {
-
-    player.position.y -= 2;
+    if (niz[poz_y-1][poz_x] == 1) {
+      if (ostatak_y >= 8) {
+        promena_y(-2)
+      }
+    }else {
+        promena_y(-2);
+    }
     makeMaze();
   }
   if (event.gamma > 5) {
-    player.position.x += 2;
+    if (niz[poz_y][poz_x+1] == 1) {
+      if (ostatak_x < 8) {
+        promena_x(2)
+      }
+    }else {
+        promena_x(2);
+    }
+
     makeMaze();
   }
   if (event.gamma < -5) {
-    player.position.x -= 2;
+    if (niz[poz_y][poz_x-1] == 1) {
+      if (ostatak_x > 7) {
+        promena_x(-2);
+      }
+    }else {
+        promena_x(-2);
+    }
+
     makeMaze();
   }
 
 
-}*/
+}
 window.addEventListener("keydown", tastatura);
 
 function tastatura() {
