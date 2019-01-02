@@ -100,10 +100,10 @@ $(document).ready(function() {
   if (event.beta < -2) {
     if (niz[poz_y-1][poz_x] == 1) {
       if (ostatak_y >= 8) {
-        promena_y(brzina(event) * -1);
+        promena_y(brzina(event) * (-1));
       }
     }else {
-        promena_y(brzina(event) *-1);
+        promena_y(brzina(event) *(-1));
     }
     makeMaze();
   }
@@ -121,10 +121,10 @@ $(document).ready(function() {
   if (event.gamma < -2) {
     if (niz[poz_y][poz_x-1] == 1) {
       if (ostatak_x > 7) {
-        promena_x(brzina(event) * -1);
+        promena_x(brzina(event) * (-1));
       }
     }else {
-        promena_x(brzina(event) * -1);
+        promena_x(brzina(event) * (-1));
     }
 
     makeMaze();
