@@ -221,11 +221,11 @@ function izracunavanje() {
 }
 function promena_y(broj){
   player.position.y+=broj;
-  $("#wrap").html("<h3>"+player.position.x+" i "+ player.position.y"</h3>");
+//  $("#wrap").html("<h3>"+player.position.x+" i "+ player.position.y"</h3>");
 }
 function promena_x(nbroj){
   player.position.x+=nbroj;
-  $("#wrap").html('<h3>'+player.position.x+" i "+ player.position.y+'</h3>');
+  //$("#wrap").html('<h3>'+player.position.x+" i "+ player.position.y+'</h3>');
 }
 function provera_specijalnih_polja() {
   if (niz[poz_y][poz_x] == 2) {
