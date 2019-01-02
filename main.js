@@ -187,11 +187,11 @@ function izracunavanje() {
    ostatak_y = player.position.y%15;
 }
 function promena_y(broj){
-  $("#wrap").html('<h3>'+player.position.x+" i "+ player.position.y'</h3>');
+  $("#wrap").html('<h3>'+player.position.x+" i "+ player.position.y+'</h3>');
   player.position.y+=broj;
 }
 function promena_x(nbroj){
-  $("#wrap").html('<h3>'+player.position.x+" i "+ player.position.y'</h3>');
+  $("#wrap").html('<h3>'+player.position.x+" i "+ player.position.y+'</h3>');
   player.position.x+=nbroj;
 }
 function provera_specijalnih_polja() {
