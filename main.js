@@ -41,7 +41,7 @@ $(document).ready(function() {
            ];
            let player = {
              position: {x: 275, y: 23},
-             color: "orange",
+             color: "aqua",
            }
 
 
@@ -203,12 +203,14 @@ function provera_specijalnih_polja() {
 function brzina(smer) {
   let ab_beta = Math.abs(smer.beta);
   let ab_gama = Math.abs(smer.gama);
-  if((ab_beta > 2 && ab_beta < 20) ||(ab_gama > 2 && ab_gama < 20)){
+  if((ab_beta > 10 && ab_beta < 20) ||(ab_gama > 10 && ab_gama < 20)){
     return 2;
   }else if ((ab_beta > 20 && ab_beta < 40) ||(ab_gama > 20 && ab_gama < 40)) {
     return 3;
-  }else {
+  }else if( ab_beta > 40 ab_gama > 40){
     return 4;
+  }else if((ab_beta > 2 && ab_beta < 10) ||(ab_gama > 2 && ab_gama < 10)){
+    return 1;
   }
 }
 });
