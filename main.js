@@ -41,7 +41,7 @@ $(document).ready(function() {
            ];
            let player = {
              position: {x: 275, y: 23},
-             color: "pink",
+             color: "red",
            }
 
 
@@ -208,11 +208,13 @@ function brzina(smer) {
   if((ab_beta >= 10 && ab_beta < 20) ||(ab_gama >= 10 && ab_gama < 20)){
     return 2;
   }else if ((ab_beta >= 20 && ab_beta < 40) ||(ab_gama >= 20 && ab_gama < 40)) {
-    return 2;
+    return 3;
   }else if( ab_beta >= 40 || ab_gama >= 40){
-    return 2;
+    return 4;
   }else if((ab_beta >= 2 && ab_beta < 10) ||(ab_gama >= 2 && ab_gama < 10)){
-    return 2;
+    return 1;
+  }else {
+    return 0;
   }
 }
 });
