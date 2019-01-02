@@ -208,11 +208,11 @@ function brzina(smer) {
   if((ab_beta >= 10 && ab_beta < 20) ||(ab_gama >= 10 && ab_gama < 20)){
     return 2;
   }else if ((ab_beta >= 20 && ab_beta < 40) ||(ab_gama >= 20 && ab_gama < 40)) {
-    return 3;
+    return 2;
   }else if( ab_beta >= 40 || ab_gama >= 40){
-    return 4;
+    return 2;
   }else if((ab_beta >= 2 && ab_beta < 10) ||(ab_gama >= 2 && ab_gama < 10)){
-    return 1;
+    return 2;
   }
 }
 });
