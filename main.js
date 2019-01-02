@@ -6,6 +6,7 @@ $(document).ready(function() {
   let ostatak_y;
   let canvas = document.getElementById('canvas');
   let ctx = canvas.getContext('2d');
+  let pravac;
   let element;
   let niz = [[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
              [1,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
@@ -40,7 +41,7 @@ $(document).ready(function() {
            ];
            let player = {
              position: {x: 275, y: 23},
-             color: "black",
+             color: "orange",
            }
 
 
@@ -85,44 +86,45 @@ $(document).ready(function() {
     izracunavanje();
     provera_specijalnih_polja();
 
-  if (event.beta > 5) {
+
+  if (event.beta > 2) {
     if (niz[poz_y+1][poz_x] == 1) {
       if (ostatak_y < 8) {
-        promena_y(2);
+        promena_y(brzina(event));
       }
     }else {
-      promena_y(2);
+      promena_y(brzina(event));
     }
     makeMaze();
   }
-  if (event.beta < -5) {
+  if (event.beta < -2) {
     if (niz[poz_y-1][poz_x] == 1) {
       if (ostatak_y >= 8) {
-        promena_y(-2)
+        promena_y(brzina(event) * -1);
       }
     }else {
-        promena_y(-2);
+        promena_y(brzina(event) *-1);
     }
     makeMaze();
   }
-  if (event.gamma > 5) {
+  if (event.gamma > 2) {
     if (niz[poz_y][poz_x+1] == 1) {
       if (ostatak_x < 8) {
-        promena_x(2)
+        promena_x(brzina(event))
       }
     }else {
-        promena_x(2);
+        promena_x(brzina(event));
     }
 
     makeMaze();
   }
-  if (event.gamma < -5) {
+  if (event.gamma < -2) {
     if (niz[poz_y][poz_x-1] == 1) {
       if (ostatak_x > 7) {
-        promena_x(-2);
+        promena_x(brzina(event) * -1);
       }
     }else {
-        promena_x(-2);
+        promena_x(brzina(event) * -1);
     }
 
     makeMaze();
@@ -196,6 +198,17 @@ function provera_specijalnih_polja() {
     player.position.y = 23;
   }else if (niz[poz_y][poz_x] == 3) {
     console.log('pobedio si');
+  }
+}
+function brzina(smer) {
+  let ab_beta = Math.abs(smer.beta);
+  let ab_gama = Math.abs(smer.gama);
+  if((ab_beta > 2 && ab_beta < 20) ||(ab_gama > 2 && ab_gama < 20)){
+    return 2;
+  }else if ((ab_beta > 20 && ab_beta < 40) ||(ab_gama > 20 && ab_gama < 40)) {
+    return 3;
+  }else {
+    return 4;
   }
 }
 });
