@@ -74,7 +74,7 @@ $(document).ready(function() {
 
            let player = {
              position: {x: 275, y: 23},
-             color: "yellow",
+             color: "orange",
            }
 
 
