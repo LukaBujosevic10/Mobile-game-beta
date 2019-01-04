@@ -74,7 +74,7 @@ $(document).ready(function() {
 
            let player = {
              position: {x: 275, y: 23},
-             color: "orange",
+             color: "purple",
            }
 
 
@@ -239,16 +239,25 @@ function brzina(smer) {
   let ab_beta = Math.abs(smer.beta);
   let ab_gama = Math.abs(smer.gama);
   if((ab_beta >= 10 && ab_beta < 20) ||(ab_gama >= 10 && ab_gama < 20)){
+    pisanje(2, ab_beta, ab_gama);
     return 2;
   }else if ((ab_beta >= 20 && ab_beta < 40) ||(ab_gama >= 20 && ab_gama < 40)) {
+    pisanje(3, ab_beta, ab_gama);
     return 3;
   }else if( ab_beta >= 40 || ab_gama >= 40){
+    pisanje(4, ab_beta, ab_gama);
     return 4;
   }else if((ab_beta >= 2 && ab_beta < 10) ||(ab_gama >= 2 && ab_gama < 10)){
+    pisanje(1, ab_beta, ab_gama);
     return 1;
   }else if(ab_beta < 2 || ab_gama < 2){
+    pisanje(0, ab_beta, ab_gama);
     return 0;
   }
-      $('#wrap').text(brzina(smer));
+}
+function pisanje(vracenjo, b, g){
+  $("#wrap").text(" ");
+  $('#wrap').text(brzina(smer) + " beta " + b + " i gama " + g);
+
 }
 });
