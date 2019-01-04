@@ -74,7 +74,7 @@ $(document).ready(function() {
 
            let player = {
              position: {x: 275, y: 23},
-             color: "black",
+             color: "red",
            }
 
 
@@ -237,7 +237,7 @@ function provera_specijalnih_polja() {
 }
 function brzina(smer) {
   let ab_beta = Math.abs(smer.beta);
-  let ab_gama = Math.abs(smer.gama);
+  let ab_gama = Math.abs(smer.gamma);
   if((ab_beta >= 10 && ab_beta < 20) ||(ab_gama >= 10 && ab_gama < 20)){
     pisanje(2, ab_beta, ab_gama);
     return 2;
@@ -257,7 +257,7 @@ function brzina(smer) {
 }
 function pisanje(vracenjo, b, g){
   $("#wrap").text(" ");
-  $('#wrap').text(vracenjo + " beta " + b + " i gama " + g);
+  $('#wrap').text(vracenjo + " beta " + round(x) + " i gama " + round(x));
 
 }
 });
