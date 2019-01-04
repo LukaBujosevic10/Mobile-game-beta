@@ -257,7 +257,7 @@ function brzina(smer) {
 }
 function pisanje(vracenjo, b, g){
   $("#wrap").text(" ");
-  $('#wrap').text(brzina(smer) + " beta " + b + " i gama " + g);
+  $('#wrap').text(vracenjo + " beta " + b + " i gama " + g);
 
 }
 });
