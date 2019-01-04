@@ -74,7 +74,7 @@ $(document).ready(function() {
 
            let player = {
              position: {x: 275, y: 23},
-             color: "red",
+             color: "green",
            }
 
 
@@ -257,7 +257,7 @@ function brzina(smer) {
 }
 function pisanje(vracenjo, b, g){
   $("#wrap").text(" ");
-  $('#wrap').text(vracenjo + " beta " + round(x) + " i gama " + round(x));
+  $('#wrap').text(vracenjo + " beta " + Math.round(x) + " i gama " + Math.round(x));
 
 }
 });
