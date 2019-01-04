@@ -249,6 +249,6 @@ function brzina(smer) {
   }else if(ab_beta < 2 || ab_gama < 2){
     return 0;
   }
-      $('#wrap').html('<p>'+brzina(smer)+'</p>');
+      $('#wrap').text(brzina(smer));
 }
 });
