@@ -1,5 +1,6 @@
 'use strict'
 $(document).ready(function() {
+
   let poz_x;
   let poz_y;
   let ostatak_x;
@@ -8,82 +9,19 @@ $(document).ready(function() {
   let ctx = canvas.getContext('2d');
   let pravac;
   let element;
-/*  let niz = [[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
-             [1,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
-             [1,0,0,0,0,0,0,0,0,0,0,2,0,0,0,0,0,0,0,1],
-             [1,0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
-             [1,0,0,2,1,2,0,0,0,0,2,0,0,0,0,1,0,0,0,1],
-             [1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,2,0,1],
-             [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1],
-             [1,2,0,0,0,0,0,0,0,0,0,0,0,0,2,1,0,0,0,1],
-             [1,1,1,1,1,1,1,0,0,0,1,1,1,1,1,1,0,0,0,1],
-             [1,0,0,0,1,2,0,0,0,0,0,0,0,0,0,0,0,0,2,1],
-             [1,0,0,0,1,0,0,0,0,0,0,2,0,0,0,0,0,0,0,1],
-             [1,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,0,0,0,1],
-             [1,0,0,0,0,0,0,2,0,1,0,0,0,0,0,1,0,0,0,1],
-             [1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,1,0,0,0,1],
-             [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,2,0,0,1],
-             [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1],
-             [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1],
-             [1,0,0,0,1,1,1,1,1,1,1,0,0,0,0,1,0,0,0,1],
-             [1,0,0,0,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,1],
-             [1,0,0,0,0,0,0,0,0,0,0,0,0,0,2,0,0,0,0,1],
-             [1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,1,0,0,0,1],
-             [1,0,0,0,0,0,0,0,0,0,1,0,0,0,0,1,0,0,0,1],
-             [1,0,0,0,0,0,2,0,0,0,1,0,0,0,0,1,0,2,0,1],
-             [1,0,0,0,1,1,1,1,1,1,1,0,0,0,0,1,0,0,0,1],
-             [1,0,0,0,0,0,0,0,2,0,0,0,0,0,0,1,1,1,1,1],
-             [1,2,0,0,0,0,0,0,0,0,0,0,0,0,2,1,0,0,0,1],
-             [1,0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,1],
-             [1,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
-             [1,2,0,0,0,0,0,0,0,0,2,0,0,0,0,0,0,0,3,1],
-             [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
-           ];
-*/
-         let niz = [[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
-                      [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
-                      [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
-                      [1,0,0,1,1,1,1,1,1,0,0,1,1,1,1,1,1,1,1,1],
-                      [1,0,0,1,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,1],
-                      [1,0,0,1,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,1],
-                      [1,0,0,0,0,0,1,1,1,0,0,0,0,0,0,1,0,0,0,1],
-                      [1,0,0,0,0,0,1,0,0,0,0,0,0,2,1,0,0,0,1],
-                      [1,1,1,1,1,1,1,0,0,0,1,1,1,1,1,1,0,0,0,1],
-                      [1,0,0,0,1,2,0,0,0,0,0,0,0,0,0,0,0,0,2,1],
-                      [1,0,0,0,1,0,0,0,0,0,0,2,0,0,0,0,0,0,0,1],
-                      [1,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,0,0,0,1],
-                      [1,0,0,0,0,0,0,2,0,1,0,0,2,0,0,1,0,0,0,1],
-                      [1,0,0,1,1,1,1,1,1,1,0,0,1,0,0,0,0,0,0,1],
-                      [1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,2,0,0,1],
-                      [1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,1],
-                      [1,0,0,1,1,1,1,1,1,1,1,0,1,0,0,1,0,0,0,1],
-                      [1,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,0,0,0,1],
-                      [1,0,0,0,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,1],
-                      [1,0,0,0,0,0,0,0,0,0,0,0,0,0,2,0,0,0,0,1],
-                      [1,1,1,1,1,1,1,1,1,1,1,0,0,1,1,1,0,0,0,1],
-                      [1,0,0,0,0,0,0,0,0,0,1,0,0,0,0,1,0,0,0,1],
-                      [1,0,0,0,0,0,2,0,0,0,1,0,0,0,0,1,1,2,1,1],
-                      [1,0,0,0,1,1,1,1,1,1,1,1,1,0,0,1,0,3,0,1],
-                      [1,0,0,0,0,0,0,0,2,0,0,0,0,0,0,1,0,0,0,1],
-                      [1,2,0,0,0,0,0,0,0,0,0,0,0,0,2,1,0,0,0,1],
-                      [1,0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,1],
-                      [1,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
-                      [1,2,0,0,0,0,0,0,0,0,2,0,0,0,0,0,0,0,0,1],
-                      [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
-                    ];
-
+  let stotinke = 0;
+  let seconds = 0;
+  let minutes = 0;
+  let nivo = 0;
+  $('#level').html('<h1>Level '+(nivo +1)+'</h1>');
            let player = {
              position: {x: 275, y: 23},
              color: "red",
            }
-
-
-           console.log(niz[0]);
-
   function  makeMaze() {
     for (var k = 0; k < 450; k=k+15) {
       for (var i = 0; i < 300; i = i+15) {
-        element = niz[k/15][i/15];
+        element = niz[nivo][k/15][i/15];
         if (element == 0) {
             ctx.fillStyle = "#ffffff";
         }else if(element == 1){
@@ -121,7 +59,7 @@ $(document).ready(function() {
 
 
   if (event.beta > 2) {
-    if (niz[poz_y+1][poz_x] == 1) {
+    if (niz[nivo][poz_y+1][poz_x] == 1) {
       if (ostatak_y < 8) {
         promena_y(brzina(event));
       }
@@ -131,7 +69,7 @@ $(document).ready(function() {
     makeMaze();
   }
   if (event.beta < -2) {
-    if (niz[poz_y-1][poz_x] == 1) {
+    if (niz[nivo][poz_y-1][poz_x] == 1) {
       if (ostatak_y >= 8) {
         promena_y(brzina(event) * (-1));
       }
@@ -141,7 +79,7 @@ $(document).ready(function() {
     makeMaze();
   }
   if (event.gamma > 2) {
-    if (niz[poz_y][poz_x+1] == 1) {
+    if (niz[nivo][poz_y][poz_x+1] == 1) {
       if (ostatak_x < 8) {
         promena_x(brzina(event))
       }
@@ -152,7 +90,7 @@ $(document).ready(function() {
     makeMaze();
   }
   if (event.gamma < -2) {
-    if (niz[poz_y][poz_x-1] == 1) {
+    if (niz[nivo][poz_y][poz_x-1] == 1) {
       if (ostatak_x > 7) {
         promena_x(brzina(event) * (-1));
       }
@@ -171,7 +109,7 @@ function tastatura() {
   izracunavanje();
   provera_specijalnih_polja();
   if (event.keyCode == 39) {
-    if (niz[poz_y][poz_x+1] == 1) {
+    if (niz[nivo][poz_y][poz_x+1] == 1) {
       if (ostatak_x < 8) {
         promena_x(2);
       }
@@ -181,7 +119,7 @@ function tastatura() {
    makeMaze();
   }
   if (event.keyCode == 37) {
-    if (niz[poz_y][poz_x-1] == 1) {
+    if (niz[nivo][poz_y][poz_x-1] == 1) {
       if (ostatak_x > 7) {
         promena_x(-2);
       }
@@ -192,7 +130,7 @@ function tastatura() {
   }
 //njnjnjnjnjnjnjn
   if (event.keyCode == 40) {
-    if (niz[poz_y+1][poz_x] == 1) {
+    if (niz[nivo][poz_y+1][poz_x] == 1) {
       if (ostatak_y < 8) {
         promena_y(2);
       }
@@ -203,7 +141,7 @@ function tastatura() {
     makeMaze();
   }
   if (event.keyCode == 38) {
-   if (niz[poz_y-1][poz_x] == 1) {
+   if (niz[nivo][poz_y-1][poz_x] == 1) {
       if (ostatak_y >= 8) {
         promena_y(-2);
       }
@@ -221,43 +159,63 @@ function izracunavanje() {
 }
 function promena_y(broj){
   player.position.y+=broj;
-//  $("#wrap").html("<h3>"+player.position.x+" i "+ player.position.y"</h3>");
 }
 function promena_x(nbroj){
   player.position.x+=nbroj;
-  //$("#wrap").html('<h3>'+player.position.x+" i "+ player.position.y+'</h3>');
 }
 function provera_specijalnih_polja() {
-  if (niz[poz_y][poz_x] == 2) {
+  if (niz[nivo][poz_y][poz_x] == 2) {
+    console.log(niz.length);
     player.position.x = 275;
     player.position.y = 23;
-  }else if (niz[poz_y][poz_x] == 3) {
-    console.log('pobedio si');
+  }else if (niz[nivo][poz_y][poz_x] == 3) {
+    if (nivo != niz.length - 1) {
+      animacija();
+      nivo++;
+      player.position.x = 275;
+      player.position.y = 23;
+      $('#level').html('<h1>Level '+(nivo +1)+'</h1>');
+    }else{
+      $('#level').html('<h3>You finished the game</h3>');
+    }
+
   }
 }
 function brzina(smer) {
   let ab_beta = Math.abs(smer.beta);
   let ab_gama = Math.abs(smer.gamma);
   if((ab_beta >= 10 && ab_beta < 20) ||(ab_gama >= 10 && ab_gama < 20)){
-    pisanje(2, ab_beta, ab_gama);
     return 2;
   }else if ((ab_beta >= 20 && ab_beta < 40) ||(ab_gama >= 20 && ab_gama < 40)) {
-    pisanje(3, ab_beta, ab_gama);
     return 3;
   }else if( ab_beta >= 40 || ab_gama >= 40){
-    pisanje(4, ab_beta, ab_gama);
     return 4;
   }else if((ab_beta >= 2 && ab_beta < 10) ||(ab_gama >= 2 && ab_gama < 10)){
-    pisanje(1, ab_beta, ab_gama);
     return 1;
   }else if(ab_beta < 2 || ab_gama < 2){
-    pisanje(0, ab_beta, ab_gama);
     return 0;
   }
 }
-function pisanje(vracenjo, b, g){
-  $("#wrap").text(" ");
-  $('#wrap').text(vracenjo + " beta " + Math.round(b) + " i gama " + Math.round(g));
+function animacija() {
+  $(canvas).animate({height: '-= 450', width: '-=300'},"slow");
+  $(canvas).animate({height: '+= 450', width: '+=300'}, "slow");
 
 }
+function vreme() {
+  if (stotinke != 100) {
+          stotinke++;
+        }else {
+          if (seconds != 60) {
+            seconds++;
+            stotinke = 0;
+          }else {
+            minutes++,
+            seconds = 0;
+            stotinke = 0;
+          }
+        }
+        $("#timer").html("<h1>" + minutes+":"+seconds+":"+stotinke +"</h1>");
+      }
+
+let timer = setInterval(vreme, 10);
 });
