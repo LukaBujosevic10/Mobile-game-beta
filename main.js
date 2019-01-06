@@ -174,13 +174,14 @@ function provera_specijalnih_polja() {
       player.position.x = 275;
       player.position.y = 23;
       $('#level').html('<h1>Level '+(nivo +1)+'</h1>');
+      time = 10;
     }else{
       $('#level').html('<h3>You finished the game</h3>');
     }
 
   }
 }
-function brzina(smer) {
+function brzina(smer) {Piroćanac
   let ab_beta = Math.abs(smer.beta);
   let ab_gama = Math.abs(smer.gamma);
   if((ab_beta >= 10 && ab_beta < 20) ||(ab_gama >= 10 && ab_gama < 20)){
