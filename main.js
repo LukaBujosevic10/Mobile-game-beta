@@ -9,8 +9,9 @@ $(document).ready(function() {
   let ctx = canvas.getContext('2d');
   let pravac;
   let element;
-  let time = 10;
+  let time = 30;
   let nivo = 0;
+  let zivoti = 3;
   $('#level').html('<h1>Level '+(nivo +1)+'</h1>');
            let player = {
              position: {x: 275, y: 23},
@@ -167,6 +168,12 @@ function provera_specijalnih_polja() {
     console.log(niz.length);
     player.position.x = 275;
     player.position.y = 23;
+    if (zivoti > 1) {
+      zivoti--;
+    }else {
+      nivo = 0;
+      zivoti = 3;
+    }
   }else if (niz[nivo][poz_y][poz_x] == 3) {
     if (nivo != niz.length - 1) {
       animacija();
@@ -174,14 +181,14 @@ function provera_specijalnih_polja() {
       player.position.x = 275;
       player.position.y = 23;
       $('#level').html('<h1>Level '+(nivo +1)+'</h1>');
-      time = 10;
+      time = 30;
     }else{
       $('#level').html('<h3>You finished the game</h3>');
     }
 
   }
 }
-function brzina(smer) {Piroćanac
+function brzina(smer) {
   let ab_beta = Math.abs(smer.beta);
   let ab_gama = Math.abs(smer.gamma);
   if((ab_beta >= 10 && ab_beta < 20) ||(ab_gama >= 10 && ab_gama < 20)){
@@ -204,7 +211,7 @@ function animacija() {
 function vreme() {
   if(time !== 0){
     time--;
-    $('#timer').html('<h1>'+time+'</h1>');
+
   }else{
     let rnd_y = Math.floor(Math.random() * 30);
     let rnd_x = Math.floor(Math.random() * 20);
@@ -213,6 +220,7 @@ function vreme() {
       makeMaze();
     }
   }
+    $('#timer').html('<h1>'+time+'</h1> '+zivoti+' lifes');
 }
 let timer = setInterval(vreme, 1000);
 });
