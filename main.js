@@ -9,9 +9,7 @@ $(document).ready(function() {
   let ctx = canvas.getContext('2d');
   let pravac;
   let element;
-  let stotinke = 0;
-  let seconds = 0;
-  let minutes = 0;
+  let time = 10;
   let nivo = 0;
   $('#level').html('<h1>Level '+(nivo +1)+'</h1>');
            let player = {
@@ -77,6 +75,7 @@ $(document).ready(function() {
         promena_y(brzina(event) *(-1));
     }
     makeMaze();
+
   }
   if (event.gamma > 2) {
     if (niz[nivo][poz_y][poz_x+1] == 1) {
@@ -202,20 +201,17 @@ function animacija() {
 
 }
 function vreme() {
-  if (stotinke != 100) {
-          stotinke++;
-        }else {
-          if (seconds != 60) {
-            seconds++;
-            stotinke = 0;
-          }else {
-            minutes++,
-            seconds = 0;
-            stotinke = 0;
-          }
-        }
-        $("#timer").html("<h1>" + minutes+":"+seconds+":"+stotinke +"</h1>");
-      }
-
-let timer = setInterval(vreme, 10);
+  if(time !== 0){
+    time--;
+    $('#timer').html('<h1>'+time+'</h1>');
+  }else{
+    let rnd_y = Math.floor(Math.random() * 30);
+    let rnd_x = Math.floor(Math.random() * 20);
+    if (niz[nivo][rnd_y][rnd_x] == 0) {
+      niz[nivo][rnd_y][rnd_x] = 2;
+      makeMaze();
+    }
+  }
+}
+let timer = setInterval(vreme, 1000);
 });
