@@ -12,6 +12,9 @@ $(document).ready(function() {
   let time = 30;
   let nivo = 0;
   let zivoti = 3;
+  let iskljuciti = false;
+  let brojac = 5;
+  let interval
   $('#level').html('<h1>Level '+(nivo +1)+'</h1>');
            let player = {
              position: {x: 275, y: 23},
@@ -21,14 +24,25 @@ $(document).ready(function() {
     for (var k = 0; k < 450; k=k+15) {
       for (var i = 0; i < 300; i = i+15) {
         element = niz[nivo][k/15][i/15];
-        if (element == 0) {
+       if (element == 0) {
+
             ctx.fillStyle = "#ffffff";
         }else if(element == 1){
           ctx.fillStyle = "#000000";
         }else if(element == 2){
-          ctx.fillStyle = "lightblue";
+          if (iskljuciti == false) {
+
+            ctx.fillStyle = "lightblue";
+          }else {
+            ctx.fillStyle = "red";
+            ctx.font = "10px Arial";
+            ctx.fillText(brojac, i, k);
+            ctx.fillStyle = "#ffffff"
+          }
         }else if (element == 3) {
           ctx.fillStyle = "red";
+        }else if (element == 4) {
+          ctx.fillStyle = "#44ed5e";
         }
         ctx.fillRect(i, k, i+15, k+15);
       }
@@ -164,7 +178,7 @@ function promena_x(nbroj){
   player.position.x+=nbroj;
 }
 function provera_specijalnih_polja() {
-  if (niz[nivo][poz_y][poz_x] == 2) {
+  if (niz[nivo][poz_y][poz_x] == 2 && iskljuciti == false) {
     console.log(niz.length);
     player.position.x = 275;
     player.position.y = 23;
@@ -186,6 +200,9 @@ function provera_specijalnih_polja() {
       $('#level').html('<h3>You finished the game</h3>');
     }
 
+  }else if (niz[nivo][poz_y][poz_x] == 4 && iskljuciti!== true) {
+    iskljuciti = true;
+    interval = setInterval(vratiti, 1000);
   }
 }
 function brzina(smer) {
@@ -221,6 +238,16 @@ function vreme() {
     }
   }
     $('#timer').html('<h1>'+time+'</h1> '+zivoti+' lifes');
+}
+function vratiti() {
+  brojac--;
+  if (brojac == 0) {
+    iskljuciti = false;
+    brojac = 5;
+    clearInterval(interval);
+  }
+  makeMaze();
+
 }
 let timer = setInterval(vreme, 1000);
 });
