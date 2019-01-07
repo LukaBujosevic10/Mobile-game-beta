@@ -14,7 +14,8 @@ $(document).ready(function() {
   let zivoti = 3;
   let iskljuciti = false;
   let brojac = 5;
-  let interval
+  let interval;
+  let teleportovao = false;
   $('#level').html('<h1>Level '+(nivo +1)+'</h1>');
            let player = {
              position: {x: 275, y: 23},
@@ -24,12 +25,14 @@ $(document).ready(function() {
     for (var k = 0; k < 450; k=k+15) {
       for (var i = 0; i < 300; i = i+15) {
         element = niz[nivo][k/15][i/15];
-       if (element == 0) {
-
+        switch (element) {
+          case 0:
             ctx.fillStyle = "#ffffff";
-        }else if(element == 1){
-          ctx.fillStyle = "#000000";
-        }else if(element == 2){
+            break;
+          case 1:
+            ctx.fillStyle = "#000000";
+            break;
+          case 2:
           if (iskljuciti == false) {
 
             ctx.fillStyle = "lightblue";
@@ -39,10 +42,16 @@ $(document).ready(function() {
             ctx.fillText(brojac, i, k);
             ctx.fillStyle = "#ffffff"
           }
-        }else if (element == 3) {
-          ctx.fillStyle = "red";
-        }else if (element == 4) {
-          ctx.fillStyle = "#44ed5e";
+            break;
+          case 3:
+            ctx.fillStyle = "red";
+            break;
+          case 4:
+            ctx.fillStyle = "#44ed5e";
+            break;
+          case 5:
+            ctx.fillStyle = "yellow";
+            break;
         }
         ctx.fillRect(i, k, i+15, k+15);
       }
@@ -201,8 +210,28 @@ function provera_specijalnih_polja() {
     }
 
   }else if (niz[nivo][poz_y][poz_x] == 4 && iskljuciti!== true) {
+
     iskljuciti = true;
     interval = setInterval(vratiti, 1000);
+  }else if (niz[nivo][poz_y][poz_x] == 5) {
+    let x_tel;
+    let y_tel;
+    for (var i = 0; i < 30; i++) {
+      if (niz[nivo][i].indexOf(5) !== -1 && i !== poz_y && niz[nivo][i].indexOf(5) !== poz_x && teleportovao !== true) {
+        y_tel = i;
+        x_tel = niz[nivo][i].indexOf(5);
+        player.position.x = x_tel*15;
+        player.position.y = y_tel*15;
+        teleportovao = true;
+        /*ctx.fillStyle = "red";
+        ctx.font = "50px Arial";
+        ctx.fillText("Teleport", 20, 20);*/
+        break;
+      }
+    }
+
+  }else if (niz[nivo][poz_y][poz_x] !== 5) {
+    teleportovao = false;
   }
 }
 function brzina(smer) {
