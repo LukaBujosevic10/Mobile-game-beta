@@ -16,6 +16,8 @@ $(document).ready(function() {
   let brojac = 5;
   let interval;
   let teleportovao = false;
+  var blup = document.getElementById("blup");
+
   $('#level').html('<h1>Level '+(nivo +1)+'</h1>');
            let player = {
              position: {x: 275, y: 23},
@@ -262,6 +264,8 @@ function vreme() {
     let rnd_y = Math.floor(Math.random() * 30);
     let rnd_x = Math.floor(Math.random() * 20);
     if (niz[nivo][rnd_y][rnd_x] == 0) {
+      blup.play();
+
       niz[nivo][rnd_y][rnd_x] = 2;
       makeMaze();
     }
